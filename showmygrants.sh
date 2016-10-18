@@ -18,7 +18,7 @@ if [ $# -gt 5  ] && [ $# -lt 3 ]; then
 fi
 
 if [ "${3}" = "-p" ]; then
-	MYSQL_PASSWD="-p ${4}"
+	MYSQL_PASSWD="-p'${4}'"
 	USER=${5}
 else
 	USER=${3}
@@ -32,5 +32,5 @@ fi
 
 SQL="SHOW GRANTS ${USER}"
 
-echo ${SQL} | ${MYSQL_PATH} ${1} ${2} ${MYSQL_PASSWD} -N
+echo ${SQL} | ${MYSQL_PATH} ${1} ${2} "${MYSQL_PASSWD}" -N
 echo

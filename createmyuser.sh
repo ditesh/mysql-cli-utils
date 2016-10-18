@@ -21,7 +21,7 @@ fi
 
 if [ "${3}" = "-p" ]; then
 
-	MYSQL_PASSWD="-p ${4}"
+	MYSQL_PASSWD="-p'${4}'"
 	USER_TO_CREATE=${5}
 
 	if [ $# -eq 6 ]; then
@@ -38,4 +38,4 @@ else
 
 fi
 
-echo "CREATE USER ${USER_TO_CREATE} ${IDENTIFIED_BY}" | ${MYSQL_PATH} ${1} ${2} ${MYSQL_PASSWD}
+echo "CREATE USER ${USER_TO_CREATE} ${IDENTIFIED_BY}" | ${MYSQL_PATH} ${1} ${2} "${MYSQL_PASSWD}"

@@ -31,7 +31,7 @@ if [ "${3}" = "-p" ]; then
 	DB=${5}
 	GRANT=${7}
 	USER_TO_GRANT=${6}
-	MYSQL_PASSWD="-p ${4}"
+	MYSQL_PASSWD="-p'${4}'"
 
 	if [ "${6}" = "custom" ]; then
 		CUSTOM_GRANT=1
@@ -79,4 +79,4 @@ if [ ${CUSTOM_GRANT} -eq 0 ]; then
 fi
 
 echo "$SQL"
-echo "${SQL}" | ${MYSQL_PATH} ${1} ${2} ${MYSQL_PASSWD}
+echo "${SQL}" | ${MYSQL_PATH} ${1} ${2} "${MYSQL_PASSWD}"
