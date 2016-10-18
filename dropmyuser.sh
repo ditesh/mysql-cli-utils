@@ -20,7 +20,7 @@ fi
 
 if [ "${3}" = "-p" ]; then
 
-        MYSQL_PASSWD="-p ${4}"
+        MYSQL_PASSWD="-p'${4}'"
        	USER_TO_DROP=${5}
 
 else
@@ -28,5 +28,4 @@ else
        	USER_TO_DROP=${3}
 fi
 
-echo "DROP USER ${USER_TO_DROP}" | ${MYSQL_PATH} ${1} ${2} ${MYSQL_PASSWD}
-
+echo "DROP USER ${USER_TO_DROP}" | ${MYSQL_PATH} ${1} ${2} "${MYSQL_PASSWD}"
